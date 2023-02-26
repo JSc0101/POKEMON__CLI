@@ -1,3 +1,3 @@
 # Look for the pokemon.
 
-* Un `CLI` en donde  te va permitir tu pokemon favorito , y sus estadisticas.
+* Un `CLI` en donde  te va permitir buscar tu pokemon favorito , y sus estadisticas.

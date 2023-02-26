@@ -6,6 +6,7 @@ name = "pip_conf_index_global"
 [packages]
 
 [dev-packages]
+coverage = "*"
 
 [requires]
 python_version = "3.11"
