@@ -1,7 +1,10 @@
 """API."""
 import requests
+from PIL import Image
 import os
 import time
+import ascii_magic
+from message import stats_pokemon
 
 URL_API = 'https://pokeapi.co/api/v2/pokemon/'
 IMAGE_FILE = 'pokemon.png'
@@ -31,3 +34,14 @@ def pokemon_image(pokemon__data):
         time.sleep(0.5)
     except (requests.exceptions.RequestException, IOError) as error_image:
         print(f"error al cafgar la imagen {error_image}")
+
+
+def show_pokemon_ascii(pokemon_data):
+    try:
+        with Image.open(IMAGE_FILE) as image:
+            ascii_pokemon = ascii_magic.from_image(IMAGE_FILE)
+            # terminal image
+            ascii_pokemon.to_terminal(columns=120, with_ratio=3)
+            stats_pokemon(pokemon_data)
+    except Exception as e:
+        print(f"error loading image {e}")
