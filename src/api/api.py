@@ -10,7 +10,7 @@ POKEMON = "https://pokeapi.co/api/v2/pokemon?limit=1000"
 IMAGE_FILE = 'pokemon.png'
 
 
-def get_pokemon_data(name: str) -> dict:
+def get_pokemon_data(name):
     """GET /"""
     try:
         url = f'{URL_API}{name.lower()}'
@@ -35,6 +35,13 @@ def pokemon_image(pokemon__data):
     except (requests.exceptions.RequestException, IOError) as error_image:
         print(f"error al cafgar la imagen {error_image}")
 
+def stats_pokemon(pokemon_data):
+    """Stats Pokemon"""
+    print(f"name: {pokemon_data['name']}")
+    print(f"HP: {pokemon_data['stats'][0]['base_stat']}")
+    print(f"type: {pokemon_data['types'][0]['type']['name']}")
+    for ability in pokemon_data["abilities"]:
+        print("", ability["ability"]["name"])
 
 def show_pokemon_ascii(pokemon_data):
     """Magic."""
@@ -47,15 +54,6 @@ def show_pokemon_ascii(pokemon_data):
             print()
     except Exception as error_art:
         print(f"error loading image {error_art}")
-
-
-def stats_pokemon(pokemon_data):
-    """Stats Pokemon"""
-    print(f"name: {pokemon_data['name']}")
-    print(f"HP: {pokemon_data['stats'][0]['base_stat']}")
-    print(f"type: {pokemon_data['types'][0]['type']['name']}")
-    for ability in pokemon_data["abilities"]:
-        print("", ability["ability"]["name"])
 
 
 def check_response_pokemon(res, pokemon_name):
