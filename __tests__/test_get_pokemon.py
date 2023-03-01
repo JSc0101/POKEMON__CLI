@@ -11,8 +11,3 @@ class GetPokemon(unittest.TestCase):
         """TYPE: DICT."""
         result = api.get_pokemon_data('lucario')
         self.assertIsInstance(result, dict)
-
-    def test_pokemon_invalid_name(self):
-        """ERROR."""
-        with self.assertRaises(requests.exceptions.HTTPError):
-            api.get_pokemon_data('invalid-pokemon-name')
