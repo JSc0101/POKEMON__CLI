@@ -1,7 +1,6 @@
 """TEST."""
-import unittest
-import requests
 from src.api import api
+import unittest
 
 
 class GetPokemon(unittest.TestCase):

@@ -1,11 +1,12 @@
 """API."""
-import requests
-from PIL import Image
-import os
 import time
+import os
+from PIL import Image
 import ascii_magic
+import requests
 
 URL_API = 'https://pokeapi.co/api/v2/pokemon/'
+POKEMON = "https://pokeapi.co/api/v2/pokemon?limit=1000"
 IMAGE_FILE = 'pokemon.png'
 
 
@@ -64,3 +65,11 @@ def check_response_pokemon(res, pokemon_name):
             f"Oh lo siento el pokemon ingresado no se pudo encontrar:  {pokemon_name}")
         return False
     return True
+
+
+def show_all_pokemon():
+    """Request."""
+    response = requests.get(POKEMON, timeout=10)
+    result = response.json()["results"]
+    for pokemon in result:
+        print(pokemon["name"])
